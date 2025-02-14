@@ -1,21 +1,79 @@
 project:
   type: website
 
+execute:
+  freeze: auto
+
 website:
-  title: "samireland.github.io"
-  navbar:
-    left:
+  title: "Sam Mooney"
+  favicon: images/favicon/favicon.ico
+  page-navigation: false
+  reader-mode: false
+  page-footer:
+    background: "#b6babe"
+    right: "Heavily inspired by https://brunbattery.github.io/NetworkNotes/"
+    left: ""
+  
+  sidebar:
+    #background: dark
+    logo: ""
+    pinned: true
+    align: center
+    tools: 
+      - icon: linkedin
+        href: https://www.linkedin.com/in/sam-d-mooney/
+        text: "LinkedIn"
+      - icon: youtube
+        href: https://www.youtube.com/@SammyMooneyMusic
+        text: "YouTube"
+        
+
+    style: "docked"
+    search: true
+    collapse-level: 2
+    contents:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: Welcome
+
+      - section: CML(Cisco Modeling Labs)
+        contents: 
+          - What is CML?.md
+          - Labs.md  
+
+      - section: CCNP ENCOR
+        contents:
+          - section: Relevant Podcasts
+            contents: 
+              - Podcasts.md
+          - section: Architecture
+            contents: 
+              - Architecture.md
+          - section: Virtualization
+            contents: 
+              - Virtualizations.md
+          - section: Infrastructure
+            contents: 
+              - Infrastructure.md
+          - section: Network Assurance
+            contents: 
+              - Network Assurance.md
+          - section: Security
+            contents: 
+              - Security.md
+          - section: Automation
+            contents: 
+              - Automation.md            
+
+      - section: Music
+        contents: 
+          - Videos
+
+
 
 format:
   html:
     theme:
-      - darkly
+      - slate
       - brand
     css: styles.css
     toc: true
-
-
-
