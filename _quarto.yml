@@ -23,9 +23,12 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/sam-d-mooney/
         text: "LinkedIn"
+      - icon: github
+        href: https://www.github.com/samireland/
+        text: "GitHub"
       - icon: youtube
-        href: https://www.youtube.com/@SammyMooneyMusic
-        text: "YouTube"
+        href: https://www.youtube.com/@SamMooneyTech
+        text: "Tech YouTube"
         
 
     style: "docked"
@@ -40,17 +43,21 @@ website:
           - What is CML?.md
           - Labs.md  
 
-      - section: CCNP ENCOR
+      - section: CCNP ENCOR(350-401)
         contents:
           - section: Relevant Podcasts
             contents: 
               - Podcasts.md
+          - section: Study Material
+            contents: 
+              - Study Material.md
           - section: Architecture
             contents: 
               - Architecture.md
           - section: Virtualization
             contents: 
               - Virtualizations.md
+              - VTI with IPSEC.md
           - section: Infrastructure
             contents: 
               - Infrastructure.md
