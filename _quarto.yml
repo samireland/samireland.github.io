@@ -57,7 +57,7 @@ website:
           - section: Virtualization
             contents: 
               - Virtualizations.md
-              - VTI with IPSEC.md
+              - VTI_with_IPSEC.md
           - section: Infrastructure
             contents: 
               - Infrastructure.md

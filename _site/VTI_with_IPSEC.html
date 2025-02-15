@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Sam Mooney</title>
+<title>VTI with IPSEC – Sam Mooney</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,9 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Sam Mooney
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">CCNP ENCOR(350-401)</li><li class="breadcrumb-item">Virtualization</li><li class="breadcrumb-item"><a href="./VTI_with_IPSEC.html">VTI with IPSEC</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -188,19 +186,19 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Virtualization</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
  <span class="menu-text">Virtualizations.md</span>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./VTI_with_IPSEC.html" class="sidebar-item-text sidebar-link">
+  <a href="./VTI_with_IPSEC.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">VTI with IPSEC</span></a>
   </div>
 </li>
@@ -283,15 +281,31 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#acronyms" id="toc-acronyms" class="nav-link active" data-scroll-target="#acronyms">Acronyms</a></li>
+  <li><a href="#general-notes" id="toc-general-notes" class="nav-link" data-scroll-target="#general-notes">General Notes</a></li>
+  <li><a href="#useful-show-commands" id="toc-useful-show-commands" class="nav-link" data-scroll-target="#useful-show-commands">Useful show commands</a></li>
+  <li><a href="#config" id="toc-config" class="nav-link" data-scroll-target="#config">Config</a>
+  <ul>
+  <li><a href="#create-a-virtual-tunnel-interface" id="toc-create-a-virtual-tunnel-interface" class="nav-link" data-scroll-target="#create-a-virtual-tunnel-interface">Create a Virtual Tunnel Interface</a></li>
+  <li><a href="#define-the-ipsec-profile" id="toc-define-the-ipsec-profile" class="nav-link" data-scroll-target="#define-the-ipsec-profile">Define the IPsec Profile</a></li>
+  <li><a href="#define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile" id="toc-define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile" class="nav-link" data-scroll-target="#define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile">Define the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)</a></li>
+  <li><a href="#define-the-ipsec-transform-set" id="toc-define-the-ipsec-transform-set" class="nav-link" data-scroll-target="#define-the-ipsec-transform-set">Define the IPsec Transform-Set</a></li>
+  <li><a href="#apply-the-ipsec-profile-to-the-tunnel" id="toc-apply-the-ipsec-profile-to-the-tunnel" class="nav-link" data-scroll-target="#apply-the-ipsec-profile-to-the-tunnel">Apply the IPsec Profile to the Tunnel</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">CCNP ENCOR(350-401)</li><li class="breadcrumb-item">Virtualization</li><li class="breadcrumb-item"><a href="./VTI_with_IPSEC.html">VTI with IPSEC</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">VTI with IPSEC</h1>
 </div>
 
 
@@ -308,9 +322,73 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<section id="acronyms" class="level4">
+<h4 class="anchored" data-anchor-id="acronyms">Acronyms</h4>
+<ul>
+<li>VTI: Virtual Tunnel Interface</li>
+<li>IPsec: Internet Protocol Security</li>
+<li>IKE: Internet Key Exchange</li>
+<li>ESP: Encapsulating Security Payload</li>
+<li>AH: Authentication Header</li>
+<li>SA: Security Association</li>
+<li>SPI: Security Parameter Index</li>
+<li>ISAKMP: Internet Security Association and Key Management Protocol</li>
+<li>PFS: Perfect Forward Secrecy</li>
+</ul>
+</section>
+<section id="general-notes" class="level4">
+<h4 class="anchored" data-anchor-id="general-notes">General Notes</h4>
+<ul>
+<li>The tunnel interface acts like a point-to-point link.</li>
+<li>Traffic routed through Tunnel0 is automatically encrypted with IPsec.</li>
+<li>Routing protocols (e.g., OSPF, BGP) can be enabled directly on Tunnel0.</li>
+</ul>
+<hr>
+</section>
+<section id="useful-show-commands" class="level4">
+<h4 class="anchored" data-anchor-id="useful-show-commands">Useful show commands</h4>
+<ul>
+<li><code>show crypto isakmp sa</code> - Displays the ISAKMP Security Association</li>
+<li><code>show crypto ipsec sa</code> - Displays the IPsec Security Association</li>
+</ul>
+<hr>
+</section>
+<section id="config" class="level4">
+<h4 class="anchored" data-anchor-id="config">Config</h4>
+<section id="create-a-virtual-tunnel-interface" class="level5">
+<h5 class="anchored" data-anchor-id="create-a-virtual-tunnel-interface">Create a Virtual Tunnel Interface</h5>
+<pre><code>interface Tunnel0
+ ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;
+ tunnel source GigabitEthernet0/0
+ tunnel destination 203.0.113.2
+ tunnel mode ipsec ipv4</code></pre>
+</section>
+<section id="define-the-ipsec-profile" class="level5">
+<h5 class="anchored" data-anchor-id="define-the-ipsec-profile">Define the IPsec Profile</h5>
+<pre><code>crypto isakmp policy 10
+ encryption aes 256
+ hash sha256
+ authentication pre-share
+ group 14
+ lifetime 86400</code></pre>
+</section>
+<section id="define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile" class="level5">
+<h5 class="anchored" data-anchor-id="define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile">Define the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)</h5>
+<pre><code>crypto isakmp key MY_SECRET_KEY address 203.0.113.2</code></pre>
+</section>
+<section id="define-the-ipsec-transform-set" class="level5">
+<h5 class="anchored" data-anchor-id="define-the-ipsec-transform-set">Define the IPsec Transform-Set</h5>
+<pre><code>crypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac
+ mode tunnel</code></pre>
+</section>
+<section id="apply-the-ipsec-profile-to-the-tunnel" class="level5">
+<h5 class="anchored" data-anchor-id="apply-the-ipsec-profile-to-the-tunnel">Apply the IPsec Profile to the Tunnel</h5>
+<pre><code>interface Tunnel0
+ tunnel protection ipsec profile MY_IPSEC_PROFILE</code></pre>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
