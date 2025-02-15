@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Sam Mooney</title>
+<title>template for other pages – Sam Mooney</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -283,15 +283,31 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#acronyms" id="toc-acronyms" class="nav-link active" data-scroll-target="#acronyms">Acronyms</a></li>
+  <li><a href="#general-notes" id="toc-general-notes" class="nav-link" data-scroll-target="#general-notes">General Notes</a></li>
+  <li><a href="#useful-show-commands" id="toc-useful-show-commands" class="nav-link" data-scroll-target="#useful-show-commands">Useful show commands</a></li>
+  <li><a href="#config" id="toc-config" class="nav-link" data-scroll-target="#config">Config</a>
+  <ul>
+  <li><a href="#create-a-virtual-tunnel-interface" id="toc-create-a-virtual-tunnel-interface" class="nav-link" data-scroll-target="#create-a-virtual-tunnel-interface">Create a Virtual Tunnel Interface</a></li>
+  <li><a href="#define-the-ipsec-profile" id="toc-define-the-ipsec-profile" class="nav-link" data-scroll-target="#define-the-ipsec-profile">Define the IPsec Profile</a></li>
+  <li><a href="#define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile" id="toc-define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile" class="nav-link" data-scroll-target="#define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile">Define the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)</a></li>
+  <li><a href="#define-the-ipsec-transform-set" id="toc-define-the-ipsec-transform-set" class="nav-link" data-scroll-target="#define-the-ipsec-transform-set">Define the IPsec Transform-Set</a></li>
+  <li><a href="#apply-the-ipsec-profile-to-the-tunnel" id="toc-apply-the-ipsec-profile-to-the-tunnel" class="nav-link" data-scroll-target="#apply-the-ipsec-profile-to-the-tunnel">Apply the IPsec Profile to the Tunnel</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">template for other pages</h1>
 </div>
 
 
@@ -308,9 +324,67 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<section id="acronyms" class="level4">
+<h4 class="anchored" data-anchor-id="acronyms">Acronyms</h4>
+<ul>
+<li>VTI: Virtual Tunnel Interface</li>
+<li>IPsec: Internet Protocol Security</li>
+</ul>
+</section>
+<section id="general-notes" class="level4">
+<h4 class="anchored" data-anchor-id="general-notes">General Notes</h4>
+<ul>
+<li>The tunnel interface acts like a point-to-point link.</li>
+<li>Traffic routed through Tunnel0 is automatically encrypted with IPsec.</li>
+<li>Routing protocols (e.g., OSPF, BGP) can be enabled directly on Tunnel0.</li>
+</ul>
+<hr>
+</section>
+<section id="useful-show-commands" class="level4">
+<h4 class="anchored" data-anchor-id="useful-show-commands">Useful show commands</h4>
+<ul>
+<li><code>show crypto isakmp sa</code> - Displays the ISAKMP Security Association</li>
+<li><code>show crypto ipsec sa</code> - Displays the IPsec Security Association</li>
+<li><code>show run | section crypto</code> - Shows crypto related configurations</li>
+</ul>
+<hr>
+</section>
+<section id="config" class="level4">
+<h4 class="anchored" data-anchor-id="config">Config</h4>
+<section id="create-a-virtual-tunnel-interface" class="level5">
+<h5 class="anchored" data-anchor-id="create-a-virtual-tunnel-interface">Create a Virtual Tunnel Interface</h5>
+<pre><code>interface Tunnel0
+ ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;
+ tunnel source GigabitEthernet0/0
+ tunnel destination 203.0.113.2
+ tunnel mode ipsec ipv4</code></pre>
+</section>
+<section id="define-the-ipsec-profile" class="level5">
+<h5 class="anchored" data-anchor-id="define-the-ipsec-profile">Define the IPsec Profile</h5>
+<pre><code>crypto isakmp policy 10
+ encryption aes 256
+ hash sha256
+ authentication pre-share
+ group 14
+ lifetime 86400</code></pre>
+</section>
+<section id="define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile" class="level5">
+<h5 class="anchored" data-anchor-id="define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile">Define the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)</h5>
+<pre><code>crypto isakmp key MY_SECRET_KEY address 203.0.113.2</code></pre>
+</section>
+<section id="define-the-ipsec-transform-set" class="level5">
+<h5 class="anchored" data-anchor-id="define-the-ipsec-transform-set">Define the IPsec Transform-Set</h5>
+<pre><code>crypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac
+ mode tunnel</code></pre>
+</section>
+<section id="apply-the-ipsec-profile-to-the-tunnel" class="level5">
+<h5 class="anchored" data-anchor-id="apply-the-ipsec-profile-to-the-tunnel">Apply the IPsec Profile to the Tunnel</h5>
+<pre><code>interface Tunnel0
+ tunnel protection ipsec profile MY_IPSEC_PROFILE</code></pre>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
