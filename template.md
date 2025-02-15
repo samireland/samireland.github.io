@@ -14,7 +14,7 @@ editor_options:
 - VTI: Virtual Tunnel Interface
 - IPsec: Internet Protocol Security
 
-#### General Notes
+#### Notes
 
 - The tunnel interface acts like a point-to-point link.
 - Traffic routed through Tunnel0 is automatically encrypted with IPsec.
@@ -23,7 +23,7 @@ editor_options:
 	
 ---
 
-#### Useful show commands
+#### Commands
 - `show crypto isakmp sa` - Displays the ISAKMP Security Association
 - `show crypto ipsec sa` - Displays the IPsec Security Association
 - `show run | section crypto` - Shows crypto related configurations
