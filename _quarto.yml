@@ -1,19 +1,14 @@
-project:
-  type: website
-
-execute:
-  freeze: auto
-
 website:
   title: "Sam Mooney"
   favicon: images/favicon/favicon.ico
   page-navigation: false
   reader-mode: false
   page-footer:
-    background: "#b6babe"
-    right: "Heavily inspired by https://brunbattery.github.io/NetworkNotes/"
+    #background: "#b6babe"
+    background: "#6f6f6f"
+    right: "Inspired by brunbattery.github.io/NetworkNotes/"
     left: ""
-  
+
   sidebar:
     #background: dark
     logo: ""
@@ -36,51 +31,91 @@ website:
     collapse-level: 2
     contents:
       - href: index.qmd
-        text: Welcome
+        text: Hello
+        
 
-      - section: CML(Cisco Modeling Labs)
+      - section: Cisco Modeling Labs
         contents: 
-          - What is CML?.md
+          - What_is_CML?.md
+          - Provision_Templates.md
           - Labs.md  
 
-      - section: CCNP ENCOR(350-401)
+
+
+
+      - section: CCNP ENCOR
         contents:
-          - section: Relevant Podcasts
-            contents: 
-              - Podcasts.md
+
           - section: Study Material
             contents: 
               - Study Material.md
-          - section: Architecture
+              - Podcasts.md
+
+          - section: Network Switching
             contents: 
-              - Architecture.md
+              - SpanningTree.md
+              - Layer2PortAggregation.md
+              - QOS.md
+
+          - section: Network Routing
+            contents:
+              - BGP.md
+              - OSPF.md
+              - EIGRP.md
+              - NAT.md
+              - Multicast.md
+
           - section: Virtualization
             contents: 
               - Virtualizations.md
               - VTI_with_IPSEC.md
-          - section: Infrastructure
+              - template.qmd
+
+          - section: Wireless
             contents: 
-              - Infrastructure.md
+              - Wireless.md
+
           - section: Network Assurance
             contents: 
               - Network Assurance.md
+
           - section: Security
             contents: 
-              - Security.md
+              - AccessLists.md
+              - AAA.md
+
           - section: Automation
             contents: 
-              - Automation.md            
+              - Automation.md
+              - Python.md
+
+          - section: Software Defined Networking
+            contents:
+              - Cisco_DNA-Center.md
+              - Cisco_SD-Access.md
+              - Cisco_SD-WAN.md
+              - APIs_DNA-Center_vManage.md
+
+
 
       - section: Music
         contents: 
-          - Videos
+          - Videos.md
 
 
 
 format:
   html:
     theme:
-      - slate
+      - darkly
       - brand
     css: styles.css
     toc: true
+    code-block-background: true
+    code-block-border-left: "#6f6f6f"
+
+project:
+  type: website
+
+execute:
+  freeze: auto

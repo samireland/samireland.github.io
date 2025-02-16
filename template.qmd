@@ -3,7 +3,7 @@ title: template for other pages
 format:
   html:
     toc: true
-    toc-depth: 5
+    toc-depth: 2
     css: styles.css
 editor_options:
   markdown:
@@ -13,6 +13,18 @@ editor_options:
 
 - Acronym1: what it stands for
 - Acronym2: what it stands for
+
+---
+
+```{mermaid}
+flowchart LR
+  A[Hard edge] --> B(Round edge)
+  B --> C{Decision}
+  C --> D[Result one]
+  C --> E[Result two]
+```
+
+---
 
 #### Notes
 
@@ -27,9 +39,17 @@ editor_options:
 - `show command 2` - What the command does / When its useful
 - `show command 3` - What the command does / When its useful
 
+::: {.callout-note}
+Remember that X does Y
+:::
+
+{{< video https://youtu.be/zi19S_dp03U >}}
+
 ---
 
 #### Config
+
+---
 
 ##### Create a XYZ
 ```
@@ -39,6 +59,8 @@ interface Tunnel0
  tunnel destination 203.0.113.2
  tunnel mode ipsec ipv4
 ```
+
+---
 
 ##### Define the XYZ
 ```

@@ -2,4 +2,4 @@
 title: "Hello"
 ---
 
-I hope this becomes something worth visiting.
+Content coming.
