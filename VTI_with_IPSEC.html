@@ -334,24 +334,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#acronyms" id="toc-acronyms" class="nav-link active" data-scroll-target="#acronyms">Acronyms</a></li>
-  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
-  <li><a href="#commands" id="toc-commands" class="nav-link" data-scroll-target="#commands">Commands</a></li>
-  <li><a href="#config" id="toc-config" class="nav-link" data-scroll-target="#config">Config</a>
-  <ul>
-  <li><a href="#create-a-virtual-tunnel-interface" id="toc-create-a-virtual-tunnel-interface" class="nav-link" data-scroll-target="#create-a-virtual-tunnel-interface">Create a Virtual Tunnel Interface</a></li>
-  <li><a href="#define-the-ipsec-profile" id="toc-define-the-ipsec-profile" class="nav-link" data-scroll-target="#define-the-ipsec-profile">Define the IPsec Profile</a></li>
-  <li><a href="#define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile" id="toc-define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile" class="nav-link" data-scroll-target="#define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile">Define the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)</a></li>
-  <li><a href="#define-the-ipsec-transform-set" id="toc-define-the-ipsec-transform-set" class="nav-link" data-scroll-target="#define-the-ipsec-transform-set">Define the IPsec Transform-Set</a></li>
-  <li><a href="#apply-the-ipsec-profile-to-the-tunnel" id="toc-apply-the-ipsec-profile-to-the-tunnel" class="nav-link" data-scroll-target="#apply-the-ipsec-profile-to-the-tunnel">Apply the IPsec Profile to the Tunnel</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -394,9 +378,7 @@ ul.task-list li input[type="checkbox"] {
 <li>The tunnel interface acts like a point-to-point link.</li>
 <li>Traffic routed through Tunnel0 is automatically encrypted with IPsec.</li>
 <li>Routing protocols (e.g., OSPF, BGP) can be enabled directly on Tunnel0.</li>
-<li>i</li>
 </ul>
-<hr>
 </section>
 <section id="commands" class="level4">
 <h4 class="anchored" data-anchor-id="commands">Commands</h4>
@@ -405,14 +387,14 @@ ul.task-list li input[type="checkbox"] {
 <li><code>show crypto ipsec sa</code> - Displays the IPsec Security Association</li>
 <li><code>show run | section crypto</code> - Shows crypto related configurations</li>
 </ul>
-<hr>
 </section>
 <section id="config" class="level4">
 <h4 class="anchored" data-anchor-id="config">Config</h4>
 <section id="create-a-virtual-tunnel-interface" class="level5">
 <h5 class="anchored" data-anchor-id="create-a-virtual-tunnel-interface">Create a Virtual Tunnel Interface</h5>
 <pre><code>interface Tunnel0
- ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;
+ ip address 192.168.1.1 255.255.255.252
+ ! can also use 'ip unnumbered &lt;interface&gt;'
  tunnel source GigabitEthernet0/0
  tunnel destination 203.0.113.2
  tunnel mode ipsec ipv4</code></pre>
