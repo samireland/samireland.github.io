@@ -1,1 +1,5 @@
 /* css styles */
+/* Change the background color of code blocks */
+pre, code {
+    background-color: #6f6f6f !important; /* Change this to your desired color */
+}
