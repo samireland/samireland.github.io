@@ -14,9 +14,9 @@
   {
     "objectID": "labs.html",
     "href": "labs.html",
-    "title": "template for other pages",
+    "title": "CML Labs",
     "section": "",
-    "text": "Labs\n\nIPSEC practice lab, includes preconfigured version with IPSEC VTI for ENCOR https://github.com/samireland/cml-resources/tree/main/ipsec-lab\nNote2\nNote3\n\n\n\n\nCommands\n\nshow command 1 - What the command does / When its useful\nshow command 2 - What the command does / When its useful\nshow command 3 - What the command does / When its useful\n\n\n\n\nConfig\n\nCreate a XYZ\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4\n\n\nDefine the XYZ\ncrypto isakmp policy 10\n encryption aes 256\n hash sha256\n authentication pre-share\n group 14\n lifetime 86400"
+    "text": "Labs\n\nIPSEC practice lab, includes preconfigured version with IPSEC VTI for ENCOR https://github.com/samireland/cml-resources/tree/main/ipsec-lab\nNote2\nNote3"
   },
   {
     "objectID": "index.html",
