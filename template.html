@@ -66,6 +66,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -370,6 +373,24 @@ ul.task-list li input[type="checkbox"] {
 <li>Acronym1: what it stands for</li>
 <li>Acronym2: what it stands for</li>
 </ul>
+<hr>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[Hard edge] --&gt; B(Round edge)
+  B --&gt; C{Decision}
+  C --&gt; D[Result one]
+  C --&gt; E[Result two]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<hr>
 </section>
 <section id="notes" class="level4">
 <h4 class="anchored" data-anchor-id="notes">Notes</h4>
@@ -387,10 +408,24 @@ ul.task-list li input[type="checkbox"] {
 <li><code>show command 2</code> - What the command does / When its useful</li>
 <li><code>show command 3</code> - What the command does / When its useful</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember that X does Y</p>
+</div>
+</div>
 <hr>
 </section>
 <section id="config" class="level4">
 <h4 class="anchored" data-anchor-id="config">Config</h4>
+<hr>
 <section id="create-a-xyz" class="level5">
 <h5 class="anchored" data-anchor-id="create-a-xyz">Create a XYZ</h5>
 <pre><code>interface Tunnel0
@@ -398,6 +433,7 @@ ul.task-list li input[type="checkbox"] {
  tunnel source GigabitEthernet0/0
  tunnel destination 203.0.113.2
  tunnel mode ipsec ipv4</code></pre>
+<hr>
 </section>
 <section id="define-the-xyz" class="level5">
 <h5 class="anchored" data-anchor-id="define-the-xyz">Define the XYZ</h5>
