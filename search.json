@@ -4,9 +4,9 @@
     "href": "VTI_with_IPSEC.html",
     "title": "VTI with IPSEC",
     "section": "",
-    "text": "Acronyms\n\nVTI: Virtual Tunnel Interface\nIPsec: Internet Protocol Security\nIKE: Internet Key Exchange\nESP: Encapsulating Security Payload\nAH: Authentication Header\nSA: Security Association\nSPI: Security Parameter Index\nISAKMP: Internet Security Association and Key Management Protocol\nPFS: Perfect Forward Secrecy\n\n\n\nNotes\n\nThe tunnel interface acts like a point-to-point link.\nTraffic routed through Tunnel0 is automatically encrypted with IPsec.\nRouting protocols (e.g., OSPF, BGP) can be enabled directly on Tunnel0.\n\n\n\n\nCommands\n\nshow crypto isakmp sa - Displays the ISAKMP Security Association\nshow crypto ipsec sa - Displays the IPsec Security Association\n\n\n\n\nConfig\n\nCreate a Virtual Tunnel Interface\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4\n\n\nDefine the IPsec Profile\ncrypto isakmp policy 10\n encryption aes 256\n hash sha256\n authentication pre-share\n group 14\n lifetime 86400\n\n\nDefine the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)\ncrypto isakmp key MY_SECRET_KEY address 203.0.113.2\n\n\nDefine the IPsec Transform-Set\ncrypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac\n mode tunnel\n\n\nApply the IPsec Profile to the Tunnel\ninterface Tunnel0\n tunnel protection ipsec profile MY_IPSEC_PROFILE",
+    "text": "Acronyms\n\nVTI: Virtual Tunnel Interface\nIPsec: Internet Protocol Security\nISAKMP: Internet Security Association and Key Management Protocol\nIKE: Internet Key Exchange\nESP: Encapsulating Security Payload\nAH: Authentication Header\nSA: Security Association\nSPI: Security Parameter Index\n\n\n\nNotes\n\nThe tunnel interface acts like a point-to-point link.\nTraffic routed through Tunnel0 is automatically encrypted with IPsec.\nRouting protocols (e.g., OSPF, BGP) can be enabled directly on Tunnel0.\ni\n\n\n\n\nCommands\n\nshow crypto isakmp sa - Displays the ISAKMP Security Association\nshow crypto ipsec sa - Displays the IPsec Security Association\nshow run | section crypto - Shows crypto related configurations\n\n\n\n\nConfig\n\nCreate a Virtual Tunnel Interface\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4\n\n\nDefine the IPsec Profile\ncrypto isakmp policy 10\n encryption aes 256\n hash sha256\n authentication pre-share\n group 14\n lifetime 86400\n\n\nDefine the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)\ncrypto isakmp key MY_SECRET_KEY address 203.0.113.2\n\n\nDefine the IPsec Transform-Set\ncrypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac\n mode tunnel\n\n\nApply the IPsec Profile to the Tunnel\ninterface Tunnel0\n tunnel protection ipsec profile MY_IPSEC_PROFILE",
     "crumbs": [
-      "CCNP ENCOR(350-401)",
+      "CCNP ENCOR",
       "Virtualization",
       "VTI with IPSEC"
     ]
@@ -16,23 +16,16 @@
     "href": "index.html",
     "title": "Hello",
     "section": "",
-    "text": "I hope this becomes something worth visiting.",
+    "text": "Content coming.",
     "crumbs": [
-      "Welcome"
+      "Hello"
     ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
   },
   {
     "objectID": "template.html",
     "href": "template.html",
     "title": "template for other pages",
     "section": "",
-    "text": "Acronyms\n\nVTI: Virtual Tunnel Interface\nIPsec: Internet Protocol Security\n\n\n\nNotes\n\nThe tunnel interface acts like a point-to-point link.\nTraffic routed through Tunnel0 is automatically encrypted with IPsec.\nRouting protocols (e.g., OSPF, BGP) can be enabled directly on Tunnel0.\n\n\n\n\nCommands\n\nshow crypto isakmp sa - Displays the ISAKMP Security Association\nshow crypto ipsec sa - Displays the IPsec Security Association\nshow run | section crypto - Shows crypto related configurations\n\n\n\n\nConfig\n\nCreate a Virtual Tunnel Interface\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4\n\n\nDefine the IPsec Profile\ncrypto isakmp policy 10\n encryption aes 256\n hash sha256\n authentication pre-share\n group 14\n lifetime 86400\n\n\nDefine the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)\ncrypto isakmp key MY_SECRET_KEY address 203.0.113.2\n\n\nDefine the IPsec Transform-Set\ncrypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac\n mode tunnel\n\n\nApply the IPsec Profile to the Tunnel\ninterface Tunnel0\n tunnel protection ipsec profile MY_IPSEC_PROFILE"
+    "text": "Acronyms\n\nAcronym1: what it stands for\nAcronym2: what it stands for\n\n\n\nNotes\n\nNote1\nNote2\nNote3\n\n\n\n\nCommands\n\nshow command 1 - What the command does / When its useful\nshow command 2 - What the command does / When its useful\nshow command 3 - What the command does / When its useful\n\n\n\n\nConfig\n\nCreate a XYZ\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4\n\n\nDefine the XYZ\ncrypto isakmp policy 10\n encryption aes 256\n hash sha256\n authentication pre-share\n group 14\n lifetime 86400"
   }
 ]
