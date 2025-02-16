@@ -41,6 +41,7 @@ editor_options:
 #### Config
 
 ##### Create a Virtual Tunnel Interface
+
 ```
 interface Tunnel0
  ip address 192.168.1.1 255.255.255.252
@@ -53,6 +54,7 @@ interface Tunnel0
 ---
 
 ##### Define the IPsec Profile
+
 ```
 crypto isakmp policy 10
  encryption aes 256
@@ -65,6 +67,7 @@ crypto isakmp policy 10
 ---
 
 ##### Define the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)
+
 ```
 crypto isakmp key MY_SECRET_KEY address 203.0.113.2
 ```
@@ -72,6 +75,7 @@ crypto isakmp key MY_SECRET_KEY address 203.0.113.2
 ---
 
 ##### Define the IPsec Transform-Set
+
 ```
 crypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac
  mode tunnel
@@ -80,7 +84,12 @@ crypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac
 ---
 
 ##### Apply the IPsec Profile to the Tunnel
+
 ```
 interface Tunnel0
  tunnel protection ipsec profile MY_IPSEC_PROFILE
+```
+
+```
+code
 ```

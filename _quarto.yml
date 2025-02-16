@@ -108,11 +108,8 @@ format:
   html:
     theme:
       - darkly
-      - brand
-    css: styles.css
+      - custom.scss
     toc: true
-    code-block-background: true
-    code-block-border-left: "#6f6f6f"
 
 project:
   type: website
