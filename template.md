@@ -11,28 +11,27 @@ editor_options:
 ---
 #### Acronyms
 
-- VTI: Virtual Tunnel Interface
-- IPsec: Internet Protocol Security
+- Acronym1: what it stands for
+- Acronym2: what it stands for
 
 #### Notes
 
-- The tunnel interface acts like a point-to-point link.
-- Traffic routed through Tunnel0 is automatically encrypted with IPsec.
-- Routing protocols (e.g., OSPF, BGP) can be enabled directly on Tunnel0.
-
+- Note1
+- Note2
+- Note3
 	
 ---
 
 #### Commands
-- `show crypto isakmp sa` - Displays the ISAKMP Security Association
-- `show crypto ipsec sa` - Displays the IPsec Security Association
-- `show run | section crypto` - Shows crypto related configurations
+- `show command 1` - What the command does / When its useful
+- `show command 2` - What the command does / When its useful
+- `show command 3` - What the command does / When its useful
 
 ---
 
 #### Config
 
-##### Create a Virtual Tunnel Interface
+##### Create a XYZ
 ```
 interface Tunnel0
  ip address 192.168.1.1 255.255.255.252 #or ip unnumbered <interface>
@@ -41,7 +40,7 @@ interface Tunnel0
  tunnel mode ipsec ipv4
 ```
 
-##### Define the IPsec Profile
+##### Define the XYZ
 ```
 crypto isakmp policy 10
  encryption aes 256
@@ -49,21 +48,4 @@ crypto isakmp policy 10
  authentication pre-share
  group 14
  lifetime 86400
-```
-
-##### Define the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)
-```
-crypto isakmp key MY_SECRET_KEY address 203.0.113.2
-```
-
-##### Define the IPsec Transform-Set
-```
-crypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac
- mode tunnel
-```
-
-##### Apply the IPsec Profile to the Tunnel
-```
-interface Tunnel0
- tunnel protection ipsec profile MY_IPSEC_PROFILE
 ```

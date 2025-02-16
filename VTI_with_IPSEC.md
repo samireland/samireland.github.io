@@ -33,6 +33,7 @@ editor_options:
 #### Commands
 - `show crypto isakmp sa` - Displays the ISAKMP Security Association
 - `show crypto ipsec sa` - Displays the IPsec Security Association
+- `show run | section crypto` - Shows crypto related configurations
 
 ---
 
