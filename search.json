@@ -12,11 +12,15 @@
     ]
   },
   {
-    "objectID": "labs.html",
-    "href": "labs.html",
+    "objectID": "Labs.html",
+    "href": "Labs.html",
     "title": "CML Labs",
     "section": "",
-    "text": "Labs\n\nIPSEC practice lab, includes preconfigured version with IPSEC VTI for ENCOR https://github.com/samireland/cml-resources/tree/main/ipsec-lab\nNote2\nNote3"
+    "text": "Labs\n\nIPSEC practice lab, includes preconfigured version with IPSEC VTI for ENCOR https://github.com/samireland/cml-resources/tree/main/ipsec-lab\nNote2\nNote3",
+    "crumbs": [
+      "Cisco Modeling Labs",
+      "CML Labs"
+    ]
   },
   {
     "objectID": "index.html",
