@@ -131,9 +131,6 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
  <span class="menu-text">Provision_Templates.md</span>
   </li>
-          <li class="sidebar-item">
- <span class="menu-text">Labs.md</span>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -398,6 +395,7 @@ ul.task-list li input[type="checkbox"] {
  tunnel source GigabitEthernet0/0
  tunnel destination 203.0.113.2
  tunnel mode ipsec ipv4</code></pre>
+<hr>
 </section>
 <section id="define-the-ipsec-profile" class="level5">
 <h5 class="anchored" data-anchor-id="define-the-ipsec-profile">Define the IPsec Profile</h5>
@@ -407,15 +405,18 @@ ul.task-list li input[type="checkbox"] {
  authentication pre-share
  group 14
  lifetime 86400</code></pre>
+<hr>
 </section>
 <section id="define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile" class="level5">
 <h5 class="anchored" data-anchor-id="define-the-ipsec-pre-shared-key-as-that-was-our-chosen-authentication-method-in-the-ipsec-profile">Define the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)</h5>
 <pre><code>crypto isakmp key MY_SECRET_KEY address 203.0.113.2</code></pre>
+<hr>
 </section>
 <section id="define-the-ipsec-transform-set" class="level5">
 <h5 class="anchored" data-anchor-id="define-the-ipsec-transform-set">Define the IPsec Transform-Set</h5>
 <pre><code>crypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac
  mode tunnel</code></pre>
+<hr>
 </section>
 <section id="apply-the-ipsec-profile-to-the-tunnel" class="level5">
 <h5 class="anchored" data-anchor-id="apply-the-ipsec-profile-to-the-tunnel">Apply the IPsec Profile to the Tunnel</h5>

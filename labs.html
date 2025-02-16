@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Hello – Sam Mooney</title>
+<title>template for other pages – Sam Mooney</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,7 +80,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Hello</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Sam Mooney
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -112,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hello</span></a>
   </div>
 </li>
@@ -339,7 +341,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Hello</h1>
+<h1 class="title">template for other pages</h1>
 </div>
 
 
@@ -356,9 +358,46 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Content coming.</p>
+<section id="labs" class="level4">
+<h4 class="anchored" data-anchor-id="labs">Labs</h4>
+<ul>
+<li>IPSEC practice lab, includes preconfigured version with IPSEC VTI for ENCOR https://github.com/samireland/cml-resources/tree/main/ipsec-lab</li>
+<li>Note2</li>
+<li>Note3</li>
+</ul>
+<hr>
+</section>
+<section id="commands" class="level4">
+<h4 class="anchored" data-anchor-id="commands">Commands</h4>
+<ul>
+<li><code>show command 1</code> - What the command does / When its useful</li>
+<li><code>show command 2</code> - What the command does / When its useful</li>
+<li><code>show command 3</code> - What the command does / When its useful</li>
+</ul>
+<hr>
+</section>
+<section id="config" class="level4">
+<h4 class="anchored" data-anchor-id="config">Config</h4>
+<section id="create-a-xyz" class="level5">
+<h5 class="anchored" data-anchor-id="create-a-xyz">Create a XYZ</h5>
+<pre><code>interface Tunnel0
+ ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;
+ tunnel source GigabitEthernet0/0
+ tunnel destination 203.0.113.2
+ tunnel mode ipsec ipv4</code></pre>
+</section>
+<section id="define-the-xyz" class="level5">
+<h5 class="anchored" data-anchor-id="define-the-xyz">Define the XYZ</h5>
+<pre><code>crypto isakmp policy 10
+ encryption aes 256
+ hash sha256
+ authentication pre-share
+ group 14
+ lifetime 86400</code></pre>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
