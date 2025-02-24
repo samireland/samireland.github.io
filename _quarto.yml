@@ -38,7 +38,7 @@ website:
         contents: 
           - What_is_CML?.md
           - Provision_Templates.md
-          - Labs.md  
+          - content/Labs.md  
 
 
 
@@ -63,13 +63,14 @@ website:
               - OSPF.md
               - EIGRP.md
               - NAT.md
-              - Multicast.md
+              - content/Multicast.md
+              - content/Multicast-Twitch-TV.md
+              - content/Multicast-Youtube-Live.md
 
           - section: Virtualization
             contents: 
               - Virtualizations.md
-              - VTI_with_IPSEC.md
-              - template.qmd
+              - content/VTI_with_IPSEC.md
 
           - section: Wireless
             contents: 
@@ -81,7 +82,8 @@ website:
 
           - section: Security
             contents: 
-              - AccessLists.md
+              - content/AccessLists.md
+              - content/COPP.md
               - AAA.md
 
           - section: Automation
@@ -95,6 +97,31 @@ website:
               - Cisco_SD-Access.md
               - Cisco_SD-WAN.md
               - APIs_DNA-Center_vManage.md
+
+      - section: Fortinet
+        contents:
+
+          - section: Fortimanager Automation
+            contents: 
+              - Study Material.md
+              - Podcasts.md
+
+          - section: AWS Direct Connect
+            contents: 
+              - DXCON.md
+
+
+      - section: AWS Advanced Network Specialty
+        contents:
+
+          - section: Study Material
+            contents: 
+              - Study Material.md
+              - Podcasts.md
+
+          - section: AWS Direct Connect
+            contents: 
+              - DXCON.md
 
 
 

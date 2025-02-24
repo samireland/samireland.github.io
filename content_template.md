@@ -4,7 +4,6 @@ format:
   html:
     toc: true
     toc-depth: 2
-    css: styles.css
 editor_options:
   markdown:
     mode: gfm
@@ -13,16 +12,6 @@ editor_options:
 
 - Acronym1: what it stands for
 - Acronym2: what it stands for
-
----
-
-```{mermaid}
-flowchart LR
-  A[Hard edge] --> B(Round edge)
-  B --> C{Decision}
-  C --> D[Result one]
-  C --> E[Result two]
-```
 
 ---
 
@@ -38,12 +27,6 @@ flowchart LR
 - `show command 1` - What the command does / When its useful
 - `show command 2` - What the command does / When its useful
 - `show command 3` - What the command does / When its useful
-
-::: {.callout-note}
-Remember that X does Y
-:::
-
-{{< video https://youtu.be/zi19S_dp03U >}}
 
 ---
 
@@ -62,12 +45,3 @@ interface Tunnel0
 
 ---
 
-##### Define the XYZ
-```
-crypto isakmp policy 10
- encryption aes 256
- hash sha256
- authentication pre-share
- group 14
- lifetime 86400
-```

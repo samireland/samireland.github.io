@@ -4,7 +4,6 @@ format:
   html:
     toc: true
     toc-depth: 2
-    css: styles.css
 editor_options:
   markdown:
     mode: gfm
