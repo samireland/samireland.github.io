@@ -1,28 +1,5 @@
 [
   {
-    "objectID": "VTI_with_IPSEC.html",
-    "href": "VTI_with_IPSEC.html",
-    "title": "VTI with IPSEC",
-    "section": "",
-    "text": "Acronyms\n\nVTI: Virtual Tunnel Interface\nIPsec: Internet Protocol Security\nISAKMP: Internet Security Association and Key Management Protocol\nIKE: Internet Key Exchange\nESP: Encapsulating Security Payload\nAH: Authentication Header\nSA: Security Association\nSPI: Security Parameter Index\n\n\n\n\nNotes\n\nThe tunnel interface acts like a point-to-point link.\nTraffic routed through Tunnel0 is automatically encrypted with IPsec.\nRouting protocols (e.g., OSPF, BGP) can be enabled directly on Tunnel0.\n\n\n\n\nCommands\n\nshow crypto isakmp sa - Displays the ISAKMP Security Association\nshow crypto ipsec sa - Displays the IPsec Security Association\nshow run | section crypto - Shows crypto related configurations\n\n\n\n\nConfig\n\nCreate a Virtual Tunnel Interface\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252\n ! can also use 'ip unnumbered &lt;interface&gt;'\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4\n\n\n\nDefine the IPsec Profile\ncrypto isakmp policy 10\n encryption aes 256\n hash sha256\n authentication pre-share\n group 14\n lifetime 86400\n\n\n\nDefine the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)\ncrypto isakmp key MY_SECRET_KEY address 203.0.113.2\n\n\n\nDefine the IPsec Transform-Set\ncrypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac\n mode tunnel\n\n\n\nApply the IPsec Profile to the Tunnel\ninterface Tunnel0\n tunnel protection ipsec profile MY_IPSEC_PROFILE\ncode",
-    "crumbs": [
-      "CCNP ENCOR",
-      "Virtualization",
-      "VTI with IPSEC"
-    ]
-  },
-  {
-    "objectID": "Labs.html",
-    "href": "Labs.html",
-    "title": "CML Labs",
-    "section": "",
-    "text": "Labs\n\nIPSEC practice lab, includes preconfigured version with IPSEC VTI for ENCOR https://github.com/samireland/cml-resources/tree/main/ipsec-lab\nNote2\nNote3",
-    "crumbs": [
-      "Cisco Modeling Labs",
-      "CML Labs"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Hello",
@@ -33,15 +10,83 @@
     ]
   },
   {
-    "objectID": "template.html",
-    "href": "template.html",
+    "objectID": "content_template.html",
+    "href": "content_template.html",
     "title": "template for other pages",
     "section": "",
-    "text": "Acronyms\n\nAcronym1: what it stands for\nAcronym2: what it stands for\n\n\n\n\n\n\n\nflowchart LR\n  A[Hard edge] --&gt; B(Round edge)\n  B --&gt; C{Decision}\n  C --&gt; D[Result one]\n  C --&gt; E[Result two]\n\n\n\n\n\n\n\n\n\nNotes\n\nNote1\nNote2\nNote3\n\n\n\n\nCommands\n\nshow command 1 - What the command does / When its useful\nshow command 2 - What the command does / When its useful\nshow command 3 - What the command does / When its useful\n\n\n\n\n\n\n\nNote\n\n\n\nRemember that X does Y\n\n\n\n\n\n\nConfig\n\n\nCreate a XYZ\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4\n\n\n\nDefine the XYZ\ncrypto isakmp policy 10\n encryption aes 256\n hash sha256\n authentication pre-share\n group 14\n lifetime 86400",
+    "text": "Acronyms\n\nAcronym1: what it stands for\nAcronym2: what it stands for\n\n\n\n\nNotes\n\nNote1\nNote2\nNote3\n\n\n\n\nCommands\n\nshow command 1 - What the command does / When its useful\nshow command 2 - What the command does / When its useful\nshow command 3 - What the command does / When its useful\n\n\n\n\nConfig\n\n\nCreate a XYZ\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4"
+  },
+  {
+    "objectID": "content/Multicast.html",
+    "href": "content/Multicast.html",
+    "title": "Multicast",
+    "section": "",
+    "text": "Acronyms\n\nIGMP: Internet Group Management Protocol\nCGMP: Cisco Group Management Protocol\nMLD: Multicast Listener Discovery\nSPT: Shortest Path Tree\nASM: Any-Source Multicast\nRP: Rendezvous Point\nPIM: Protocol Independent Multicast\n\nPIM-DM: Dense Mode\nPIM-SM: Spares Mode\nBIDIR-PIM: Bidirectional Mode\n\nSSM: Source Specific Multicast\nRPF: Reverse Path Forwarding\nBSR: Bootstrap Router\n\n\n\n\nNotes\nAddress Scope Addresses Use\nLocal-scope 224.0.0.0/24 Reserved by the IANA for network protocol use, won’t leave local network, TTL usually 1 Global-scope 224.0.1.0-238.255.255.255 Allocated dynamically throughout the Internet Administratively scoped 239.0.0.0/8 Reserved for use inside private domains\nAddress Use 224.0.0.1 All Hosts 224.0.0.2 All IPv4 routers 224.0.0.13 All PIMv2 routers 224.0.0.5 Used by unicast routing protocols 224.0.0.6 224.0.0.9 224.0.0.10\n\n\nGeneral\n\nMulticast is used to send the same data packets to multiple receivers\nPackets are duplicated by routers downstream of the source. Routers handle delivery to receivers\nSender does not need to know the unicast address of receivers\nReceivers register for a multicast stream by telling their first-hop router\nRPF is used to ensure packets aren’t looping\nMulticast is generally used for UDP based applications, this brings expected issues when network reliability is poor\nMulticast traffic is subject to eavesdropping as restricting who can access a stream is challenging\nMulticast uses include: IPTV, Training, Video Conferencing, Collaboration, Video on Demand\nVarious models:\n\nOne-to-Many\nMany-to-Many\nMany-to-One\n\nRouters listen to multicast address ranges. Routing protocols manage groups\nGroups are managed by last hop router from source, communicates membership to the network\n\nIGMP Messages are used by receivers to notify router when joining/leaving group\nMLD messages used for IPv6\n\nPIM is a multicast routing protocol used to efficiently forward data #### IGMP\nIGMP allows hosts to request to listen to a multicast stream from their upstream router. This then allows the router to join the requested multicast group and forward the traffic to the hosts network segment\nIGMPv3 is the current version of IGMP and is backwards compatible\nInitial Membership report is unsolicited, subsequent are in response to membership queries\nmembership queries and reports always have a TTL of one as they are only locally significant\nv2: Leave-group message: used by the host to inform the router they are leaving the group\nIGMPv3 is recent, still being implemented broadly. Major operating systems have support\nIGMPv3 adds ‘Source Filtering’ support. Receiver host sends a list of desired sources. Cisco IOS forwards traffic from only those sources #### Source Trees vs Shared Trees\nSource trees are more efficient and used for low/single numbers of sources\nShared trees are far more efficient as the number of sources increases\n(S,G) notation, This notation is essential in multicast routing because it defines a specific source (S) sending to a multicast group (G), preventing unwanted traffic from other sources\n\nSource Trees: (S,G) : (source IP, Multicast IP)\nShared Trees: (S,G) : (*, Multicast IP)\n\nRendezvous point is the Shared Root of a shared tree.\n\nAll source traffic must first go to the RP before being distributed to receivers\nAll receiver traffic will come from the RP, even if an upstream router or source has a shorter path to the receiver\n\nDistribution trees must be dynamic as multicast group members can join or leave any time #### PIM\nPIM-SM is used universally over PIM-DM. PIM-DM is not appropriate for any production application\nPIM-DM Begins by flooding multicast traffic throughout the network. Routers with no downstream neighbors will then prune the unneeded traffic\nThe State information is learned though this flooding and pruning process\nPIM-DM supports Source Trees, not Shared Trees\nPIM-SM uses an explicit pull mode. Traffic is specifically sent downstream when needed, not flooded\nPIM-SM uses an RP. The shared tree is rooted at the RP. Senders register with the RP and only sent one copy of traffic to it\nGroup members are connected to the shared tree by the local DR(first-hop router?), by sending PIM join messages to an RP\nfirst-hop routers with directly connected traffic sources send PIM register messages to the RP.\nSPT Threshold can be configured to have more efficient pathing for high volume traffic. When the multicast traffic on a given flow exceeds this threshold, the last-hop router (the one directly connected to the multicast receivers) automatically joins the SPT. This means it signals its interest in receiving the multicast stream directly from the source rather than via the RP.\nMultiple RPs can be used for different groups or group ranges. Access-lists are used to control which groups use which RP\nPIM-SM Shared Tree Join\n\nReceiver sends multicast IGMP membership report\nDR on the same LAN receives the IGMP membership report\nDR knows the RP routers IP address, and sends a (*,G) join where group is known from the Receivers IGMP membership report\n(*,G) flows through the network to the RP, branch is created by this process so the tree includes a path from RP to Last-hop router\n\nPIM-SM Sender Registration\n\nSource sends multicast packets\nThe First-Hop DR will register that source with the RP by encapsulating the packets in PIM register messages and sending them tot he RP via unicast\nThis builds an SPT from the first-hop router to the RP so traffic can flow from the Source to the RP\nWhen the RP is receiving multicast from the Source it generates a PIM register-stop message for the first-hop router which stops the unicast PIM register messages\nThis all allows multicast traffic to flow from the source to the RP and down to the receivers\n\nDesignated Router and Last-Hop routers aren’t always the same.\n\nDR sits on local LAN and represents that network in multicast routing protocols\nLast-Hop Router is the last router before the receiver\n\nAuto-RP vs BSR\n\n\n\nCommands\n\nshow ip mroute - Displays the multicast routing table and helps verify the multicast tree structure\nshow ip pim neighbor - Lists PIM neighbors to ensure proper PIM adjacencies\nshow ip igmp groups - Confirms which multicast groups have active receivers on an interface\nmtrace - Traces the route of multicast packets to help pinpoint where packets are being dropped or mis-routed",
+    "crumbs": [
+      "CCNP ENCOR",
+      "Network Routing",
+      "Multicast"
+    ]
+  },
+  {
+    "objectID": "content/DXCON.html",
+    "href": "content/DXCON.html",
+    "title": "AWS Direct Connect",
+    "section": "",
+    "text": "Acronyms\n\nDXCON: Direct Connect\nVIF: Virtual Interface\nVGW: Virtual Private Gateway\n\nUsed to terminate VPNs and VIFs within a VPC\n\n\n\n\n\n\n\nNotes\n\nTypes of VIF\n\nPublic VIF\nPrivate VIF\nTransit VIF\n\nLimitations\n\n51 total VIFs max per DXCON\n4 Transit VIFs max per DXCON\n\nPublic VIFs are used to access AWS public services that would otherwise be accessed over the internet. They allow access to all AWS regions via whatever region you connect to\nPrivate VIFs are used to access specific VPCs that may belong to your organisation that you don’t want internet facing\nVPCs in other AWS regions are not accessible via a private VIF terminating on a VGW\n\n\n\n\n\nCommands\n\nshow command 1 - What the command does / When its useful\nshow command 2 - What the command does / When its useful\nshow command 3 - What the command does / When its useful\n\n\n\n\nConfig\n\n\nCreate a XYZ\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4\n\n\n\nDefine the XYZ\ncrypto isakmp policy 10\n encryption aes 256\n hash sha256\n authentication pre-share\n group 14\n lifetime 86400"
+  },
+  {
+    "objectID": "content/AccessLists.html",
+    "href": "content/AccessLists.html",
+    "title": "Access Control Lists",
+    "section": "",
+    "text": "Acronyms\n\nACL: Access Control List\nAcronym2: what it stands for\n\n\n\n\nNotes\n\nNote1\nNote2\nNote3\n\n\n\n\nCommands\n\nshow command 1 - What the command does / When its useful\nshow command 2 - What the command does / When its useful\nshow command 3 - What the command does / When its useful\n\n\n\n\nConfig\n\n\nCreate a XYZ\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4",
+    "crumbs": [
+      "CCNP ENCOR",
+      "Security",
+      "Access Control Lists"
+    ]
+  },
+  {
+    "objectID": "content/COPP.html",
+    "href": "content/COPP.html",
+    "title": "Control Plane Policing",
+    "section": "",
+    "text": "Acronyms\n\nAcronym1: what it stands for\nAcronym2: what it stands for\n\n\n\n\nNotes\n\nNote1\nNote2\nNote3\n\n\n\n\nCommands\n\nshow command 1 - What the command does / When its useful\nshow command 2 - What the command does / When its useful\nshow command 3 - What the command does / When its useful\n\n\n\n\nConfig\n\n\nCreate a XYZ\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4",
+    "crumbs": [
+      "CCNP ENCOR",
+      "Security",
+      "Control Plane Policing"
+    ]
+  },
+  {
+    "objectID": "content/Labs.html",
+    "href": "content/Labs.html",
+    "title": "CML Labs",
+    "section": "",
+    "text": "Labs\n\nIPSEC practice lab, includes preconfigured version with IPSEC VTI for ENCOR https://github.com/samireland/cml-resources/tree/main/ipsec-lab\nNote2\nNote3",
+    "crumbs": [
+      "Cisco Modeling Labs",
+      "CML Labs"
+    ]
+  },
+  {
+    "objectID": "content/VTI_with_IPSEC.html",
+    "href": "content/VTI_with_IPSEC.html",
+    "title": "VTI with IPSEC",
+    "section": "",
+    "text": "Acronyms\n\nVTI: Virtual Tunnel Interface\nIPsec: Internet Protocol Security\nISAKMP: Internet Security Association and Key Management Protocol\nIKE: Internet Key Exchange\nESP: Encapsulating Security Payload\nAH: Authentication Header\nSA: Security Association\nSPI: Security Parameter Index\n\n\n\n\nNotes\n\nThe tunnel interface acts like a point-to-point link.\nTraffic routed through Tunnel0 is automatically encrypted with IPsec.\nRouting protocols (e.g., OSPF, BGP) can be enabled directly on Tunnel0.\n\n\n\n\nCommands\n\nshow crypto isakmp sa - Displays the ISAKMP Security Association\nshow crypto ipsec sa - Displays the IPsec Security Association\nshow run | section crypto - Shows crypto related configurations\n\n\n\n\nConfig\n\nCreate a Virtual Tunnel Interface\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252\n ! can also use 'ip unnumbered &lt;interface&gt;'\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4\n\n\n\nDefine the IPsec Profile\ncrypto isakmp policy 10\n encryption aes 256\n hash sha256\n authentication pre-share\n group 14\n lifetime 86400\n\n\n\nDefine the IPsec Pre-Shared Key (as that was our chosen authentication method in the IPsec Profile)\ncrypto isakmp key MY_SECRET_KEY address 203.0.113.2\n\n\n\nDefine the IPsec Transform-Set\ncrypto ipsec transform-set MY_TRANSFORM_SET esp-aes 256 esp-sha-hmac\n mode tunnel\n\n\n\nApply the IPsec Profile to the Tunnel\ninterface Tunnel0\n tunnel protection ipsec profile MY_IPSEC_PROFILE\ncode",
     "crumbs": [
       "CCNP ENCOR",
       "Virtualization",
-      "template for other pages"
+      "VTI with IPSEC"
     ]
+  },
+  {
+    "objectID": "format_reference.html",
+    "href": "format_reference.html",
+    "title": "template for other pages",
+    "section": "",
+    "text": "Acronyms\n\nAcronym1: what it stands for\nAcronym2: what it stands for\n\n\n\n\n\n\n\nflowchart LR\n  A[Hard edge] --&gt; B(Round edge)\n  B --&gt; C{Decision}\n  C --&gt; D[Result one]\n  C --&gt; E[Result two]\n\n\n\n\n\n\n\n\n\nNotes\n\nNote1\nNote2\nNote3\n\n\n\n\nCommands\n\nshow command 1 - What the command does / When its useful\nshow command 2 - What the command does / When its useful\nshow command 3 - What the command does / When its useful\n\n\n\n\n\n\n\nNote\n\n\n\nRemember that X does Y\n\n\n\n\n\n\nConfig\n\n\nCreate a XYZ\ninterface Tunnel0\n ip address 192.168.1.1 255.255.255.252 #or ip unnumbered &lt;interface&gt;\n tunnel source GigabitEthernet0/0\n tunnel destination 203.0.113.2\n tunnel mode ipsec ipv4\n\n\n\nDefine the XYZ\ncrypto isakmp policy 10\n encryption aes 256\n hash sha256\n authentication pre-share\n group 14\n lifetime 86400"
   }
 ]

@@ -207,8 +207,11 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">NAT.md</span>
   </li>
           <li class="sidebar-item">
- <span class="menu-text">Multicast.md</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./content/Multicast.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multicast</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -534,7 +537,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/sammooney\.com");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
